@@ -1,25 +1,11 @@
-:root {
-  --primary-color: #ff0000;
-  --secondary-color: #00ff00;
-  --background-color: #000000;
+@import "tailwindcss";
 
-  --light-text-color: #ffffff;
-  --dark-text-color: #000000;
-}
-
-/* resets */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-ul,
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: var(--light-text-color);
+@theme {
+  --color-primary: red;
+  --color-secondary: blue;
+  --color-tertiary: green;
+  --color-background: black;
+  --color-light-text: white;
+  --color-dark-text: black;
+  --color-error: red;
 }
