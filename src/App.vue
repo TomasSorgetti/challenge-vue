@@ -1,9 +1,11 @@
 <script setup></script>
 
 <template>
-  <div>
-    <h1>Videogames</h1>
-  </div>
+  <nav>
+    <router-link to="/">Inicio</router-link> |
+    <router-link to="/about">Acerca</router-link>
+  </nav>
+  <router-view />
 </template>
 
 <style scoped></style>
