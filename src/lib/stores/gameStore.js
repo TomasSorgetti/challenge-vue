@@ -2,6 +2,11 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 import { getAllGames, getGameById } from "../services/games";
 
+/**
+ * Función para manejar el estado de games
+ *
+ * @returns {Object} games, currentGame, loading, error, fetchGames, fetchGameById
+ */
 export const useGameStore = defineStore("game", () => {
   const games = ref([]);
   const currentGame = ref(null);
@@ -21,12 +26,6 @@ export const useGameStore = defineStore("game", () => {
   };
 
   const fetchGameById = async (id) => {
-    if (!id) {
-      return;
-    }
-    // if (currentGame.value && currentGame.value.id === id) {
-    //   return;
-    // }
     loading.value = true;
     error.value = null;
     try {

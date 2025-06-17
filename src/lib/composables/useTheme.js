@@ -1,5 +1,10 @@
 import { ref, onMounted } from "vue";
 
+/**
+ * Función para cambiar el theme de la aplicación
+ *
+ * @returns {Object} isDark, toggleTheme
+ */
 export function useTheme() {
   const isDark = ref(false);
 

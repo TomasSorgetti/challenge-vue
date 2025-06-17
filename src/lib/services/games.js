@@ -1,5 +1,10 @@
 import { URL_BASE, API_KEY } from "../constants/index";
 
+/**
+ * Obtiene una lista de juegos
+ * @param {number} page
+ * @returns
+ */
 export const getAllGames = async (page = 1) => {
   try {
     if (API_KEY.trim() === "") throw new Error("API key is required");
@@ -10,6 +15,7 @@ export const getAllGames = async (page = 1) => {
 
     if (!response.ok) throw new Error("Failed to fetch games");
     const data = await response.json();
+
     return data.results;
   } catch (error) {
     console.error("Error fetching games:", error);
@@ -17,6 +23,11 @@ export const getAllGames = async (page = 1) => {
   }
 };
 
+/**
+ * Obtiene un juego por su ID
+ * @param {number} id
+ * @returns
+ */
 export const getGameById = async (id) => {
   try {
     if (API_KEY.trim() === "") throw new Error("API key is required");
