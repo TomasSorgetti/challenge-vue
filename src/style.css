@@ -9,6 +9,11 @@
   --background-color: #ebf0f4;
   --light-text-color: #000000;
   --dark-text-color: #000000;
+
+  /* Skeletons */
+  --dark-skeleton: #4d4d4d;
+  --medium-skeleton: #a0a0a0;
+  --light-skeleton: #b9b9b9;
 }
 
 [data-theme="dark"] {
@@ -20,6 +25,11 @@
   --background-color: #0a0a0b;
   --light-text-color: #ffffff;
   --dark-text-color: #818181;
+
+  /* Skeletons */
+  --dark-skeleton: #4d4d4d;
+  --medium-skeleton: #a0a0a0;
+  --light-skeleton: #b9b9b9;
 }
 
 @theme {
@@ -31,4 +41,9 @@
   --color-background: var(--background-color);
   --color-light-text-color: var(--light-text-color);
   --color-dark-text-color: var(--dark-text-color);
+
+  /* Skeletons */
+  --color-dark-skeleton: var(--dark-skeleton);
+  --color-medium-skeleton: var(--medium-skeleton);
+  --color-light-skeleton: var(--light-skeleton);
 }

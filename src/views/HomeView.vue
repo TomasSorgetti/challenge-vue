@@ -14,12 +14,16 @@ import { useGameStore } from "../lib/stores/gameStore";
 import { storeToRefs } from "pinia";
 import GameCard from "../components/GameCard.vue";
 import PopularGames from "../components/PopularGames.vue";
+import PopularSkeleton from "../components/skeletons/PopularSkeleton.vue";
+import GameCardSkeleton from "../components/skeletons/GameCardSkeleton.vue";
 
 export default {
   name: "HomeView",
   components: {
     GameCard,
     PopularGames,
+    PopularSkeleton,
+    GameCardSkeleton,
   },
   setup() {
     const gameStore = useGameStore();
@@ -58,8 +62,17 @@ export default {
     >
       find all the games in one place
     </h1>
-    <div v-if="loading" class="text-text mt-12">Loading...</div>
+
+    <!-- Loading skeleton -->
+    <div v-if="loading">
+      <PopularSkeleton />
+      <GameCardSkeleton />
+    </div>
+
+    <!-- Error -->
     <div v-else-if="error" class="text-red-500">{{ error }}</div>
+
+    <!-- Content -->
     <div v-else>
       <PopularGames :games="popularGames" :loading="loading" :error="error" />
       <h2 class="text-2xl font-bold mb-4 mt-8">Tous les jeux</h2>
