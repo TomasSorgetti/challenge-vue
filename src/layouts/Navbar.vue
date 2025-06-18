@@ -1,10 +1,8 @@
 <script setup>
 import { ref } from "vue";
-import { useTheme } from "../lib/composables/useTheme";
 import { RouterLink } from "vue-router";
 import MainButton from "../components/MainButton.vue";
-
-const { isDark, toggleTheme } = useTheme();
+import ThemeToggle from "../components/ThemeToggle.vue";
 
 // Menu
 const isMenuOpen = ref(false);
@@ -64,7 +62,7 @@ const closeMenu = () => {
           'bg-background flex flex-col items-center justify-center gap-4',
           'fixed top-0 left-0 w-full h-screen transition-transform duration-300',
           isMenuOpen ? 'translate-x-0' : 'translate-x-full',
-          'md:static md:flex md:flex-row md:justify-end md:h-auto md:transform-none md:gap-6',
+          'md:static md:flex md:flex-row md:justify-end md:h-auto md:translate-x-0 md:gap-6',
         ]"
       >
         <li>
@@ -78,25 +76,20 @@ const closeMenu = () => {
         </li>
         <li>
           <RouterLink
-            to="/platforms"
+            to="/favorites"
             class="text-light-text-color hover:text-primary"
             @click="closeMenu"
           >
-            Platforms
+            Favorites
           </RouterLink>
         </li>
         <li>
-          <MainButton to="/signup" @click="closeMenu" primary
+          <MainButton to="/" @click="closeMenu" primary
             >Sign Up</MainButton
           >
         </li>
         <li>
-          <button
-            @click="toggleTheme"
-            class="w-full text-center text-light-text-color"
-          >
-            {{ isDark ? "Claro" : "Oscuro" }}
-          </button>
+          <ThemeToggle />
         </li>
       </ul>
     </nav>
