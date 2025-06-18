@@ -11,7 +11,7 @@
  */
 import { onMounted } from "vue";
 import { useGameStore } from "../lib/stores/gameStore";
-import { storeToRefs } from "pinia"; // Import storeToRefs
+import { storeToRefs } from "pinia";
 import GameCard from "../components/GameCard.vue";
 import PopularGames from "../components/PopularGames.vue";
 
@@ -52,14 +52,16 @@ export default {
 </script>
 
 <template>
-  <h1 class="text-primary">Bienvenido a la página de inicio</h1>
-  <div v-if="loading" class="text-text mt-12">Loading...</div>
-  <div v-else-if="error" class="text-red-500">{{ error }}</div>
-  <div v-else>
-    <PopularGames :games="popularGames" />
-    <h2 class="text-2xl font-bold mb-4 mt-8">Tous les jeux</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <GameCard v-for="game in games" :key="game.id" :game="game" />
+  <main class="container mx-auto p-4">
+    <h1 class="text-primary">Bienvenido a la página de inicio</h1>
+    <div v-if="loading" class="text-text mt-12">Loading...</div>
+    <div v-else-if="error" class="text-red-500">{{ error }}</div>
+    <div v-else>
+      <PopularGames :games="popularGames" />
+      <h2 class="text-2xl font-bold mb-4 mt-8">Tous les jeux</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <GameCard v-for="game in games" :key="game.id" :game="game" />
+      </div>
     </div>
-  </div>
+  </main>
 </template>

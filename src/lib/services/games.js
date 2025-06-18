@@ -38,7 +38,6 @@ export const getPopularGames = async (size = 5) => {
     if (!response.ok) throw new Error("Failed to fetch most popular games");
     const data = await response.json();
 
-
     return data.results;
   } catch (error) {
     console.error("Error fetching game:", error);
@@ -57,7 +56,9 @@ export const getGameById = async (id) => {
 
     const response = await fetch(`${URL_BASE}/games/${id}?key=${API_KEY}`);
     if (!response.ok) throw new Error("Failed to fetch game");
-    return await response.json();
+    const data = await response.json();
+
+    return data;
   } catch (error) {
     console.error("Error fetching game:", error);
     throw error;

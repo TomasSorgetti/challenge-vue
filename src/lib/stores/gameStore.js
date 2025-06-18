@@ -33,11 +33,14 @@ export const useGameStore = defineStore("game", () => {
 
   const fetchGameById = async (id) => {
     error.value = null;
+    loading.value = true;
     try {
       currentGame.value = await getGameById(id);
     } catch (err) {
       error.value = err.message;
       console.error("fetchGameById error:", err);
+    } finally {
+      loading.value = false;
     }
   };
 
