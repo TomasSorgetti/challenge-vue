@@ -1,41 +1,54 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { getAllGames, getGameById } from "../services/games";
+import { getAllGames, getPopularGames, getGameById } from "../services/games";
 
-/**
- * Función para manejar el estado de games
- *
- * @returns {Object} games, currentGame, loading, error, fetchGames, fetchGameById
- */
 export const useGameStore = defineStore("game", () => {
   const games = ref([]);
+  const popularGames = ref([]);
   const currentGame = ref(null);
   const loading = ref(false);
   const error = ref(null);
 
   const fetchGames = async (page = 1) => {
-    loading.value = true;
     error.value = null;
     try {
-      games.value = await getAllGames(page);
+      const result = await getAllGames(page);
+      games.value = result;
     } catch (err) {
       error.value = err.message;
-    } finally {
-      loading.value = false;
+      console.error("fetchGames error:", err);
+    }
+  };
+
+  const fetchPopularGames = async () => {
+    error.value = null;
+    try {
+      const result = await getPopularGames();
+      popularGames.value = result;
+    } catch (err) {
+      error.value = err.message;
+      console.error("fetchPopularGames error:", err);
     }
   };
 
   const fetchGameById = async (id) => {
-    loading.value = true;
     error.value = null;
     try {
       currentGame.value = await getGameById(id);
     } catch (err) {
       error.value = err.message;
-    } finally {
-      loading.value = false;
+      console.error("fetchGameById error:", err);
     }
   };
 
-  return { games, currentGame, loading, error, fetchGames, fetchGameById };
+  return {
+    games,
+    popularGames,
+    currentGame,
+    loading,
+    error,
+    fetchGames,
+    fetchPopularGames,
+    fetchGameById,
+  };
 });
