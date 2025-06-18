@@ -17,8 +17,10 @@ const closeMenu = () => {
 </script>
 
 <template>
-  <header class="fixed top-0 left-0 w-full bg-background z-50">
-    <nav class="p-4 container mx-auto flex justify-between items-center">
+  <header class="fixed top-0 left-0 w-full bg-background z-50 shadow-2xl">
+    <nav
+      class="p-4 container mx-auto flex justify-between items-center lg:py-6"
+    >
       <!-- Logo -->
       <RouterLink
         to="/"

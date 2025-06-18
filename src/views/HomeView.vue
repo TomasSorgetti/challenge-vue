@@ -16,6 +16,7 @@ import GameCard from "../components/GameCard.vue";
 import PopularGames from "../components/PopularGames.vue";
 import PopularSkeleton from "../components/skeletons/PopularSkeleton.vue";
 import GameCardSkeleton from "../components/skeletons/GameCardSkeleton.vue";
+import SearchBar from "../components/SearchBar.vue";
 
 export default {
   name: "HomeView",
@@ -24,6 +25,7 @@ export default {
     PopularGames,
     PopularSkeleton,
     GameCardSkeleton,
+    SearchBar,
   },
   setup() {
     const gameStore = useGameStore();
@@ -75,7 +77,8 @@ export default {
     <!-- Content -->
     <div v-else>
       <PopularGames :games="popularGames" :loading="loading" :error="error" />
-      <h2 class="text-2xl font-bold mb-4 mt-8">Tous les jeux</h2>
+      <SearchBar />
+      <h2 class="text-2xl font-bold mb-4 mt-8">Filter by:</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <GameCard v-for="game in games" :key="game.id" :game="game" />
       </div>
