@@ -53,11 +53,15 @@ export default {
 
 <template>
   <main class="container mx-auto p-4">
-    <h1 class="text-primary">Bienvenido a la página de inicio</h1>
+    <h1
+      class="text-light-text-color mt-32 text-6xl max-w-[630px] font-bold uppercase"
+    >
+      find all the games in one place
+    </h1>
     <div v-if="loading" class="text-text mt-12">Loading...</div>
     <div v-else-if="error" class="text-red-500">{{ error }}</div>
     <div v-else>
-      <PopularGames :games="popularGames" />
+      <PopularGames :games="popularGames" :loading="loading" :error="error" />
       <h2 class="text-2xl font-bold mb-4 mt-8">Tous les jeux</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <GameCard v-for="game in games" :key="game.id" :game="game" />

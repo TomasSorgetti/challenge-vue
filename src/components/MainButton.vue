@@ -26,9 +26,9 @@ defineProps({
   <RouterLink
     :to="to"
     :class="[
-      'px-4 py-2 rounded-lg text-text transition-colors duration-200',
+      'px-6 py-3 font-bold rounded-lg text-text transition-colors duration-200',
       primary && !secondary ? 'bg-primary text-white' : '',
-      secondary ? 'bg-secondary text-black' : '',
+      secondary ? 'bg-white text-black' : '',
       notAllowed && 'cursor-not-allowed',
     ]"
   >
