@@ -1,16 +1,104 @@
 <script setup>
+import { ref } from "vue";
 import { useTheme } from "../lib/composables/useTheme";
+import { RouterLink } from "vue-router";
+import MainButton from "../components/MainButton.vue";
 
 const { isDark, toggleTheme } = useTheme();
+
+// Menu
+const isMenuOpen = ref(false);
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
+
+const closeMenu = () => {
+  isMenuOpen.value = false;
+};
 </script>
 
 <template>
-  <nav class="bg-primary p-4 shadow">
-    <button
-      @click="toggleTheme"
-      class="bg-background text-text px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700"
-    >
-      {{ isDark ? "Claro" : "Oscuro" }}
-    </button>
-  </nav>
+  <header class="fixed top-0 left-0 w-full bg-background z-50">
+    <nav class="p-4 container mx-auto flex justify-between items-center">
+      <!-- Logo -->
+      <RouterLink
+        to="/"
+        class="z-50 text-3xl text-light-text-color font-bold uppercase"
+      >
+        Videogames
+      </RouterLink>
+
+      <!-- Hamburger button -->
+      <button
+        @click="toggleMenu"
+        class="md:hidden flex flex-col items-center gap-1.5 z-50"
+        :aria-expanded="isMenuOpen"
+        aria-controls="mobile-menu"
+        aria-label="Toggle navigation menu"
+      >
+        <div
+          :class="[
+            'w-6 h-0.5 bg-black transition-transform duration-300',
+            isMenuOpen ? 'rotate-45 translate-y-2' : '',
+          ]"
+        ></div>
+        <div
+          :class="[
+            'w-6 h-0.5 bg-black transition-opacity duration-300',
+            isMenuOpen ? 'opacity-0' : '',
+          ]"
+        ></div>
+        <div
+          :class="[
+            'w-6 h-0.5 bg-black transition-transform duration-300',
+            isMenuOpen ? '-rotate-45 -translate-y-2' : '',
+          ]"
+        ></div>
+      </button>
+
+      <!-- Menu -->
+      <ul
+        id="mobile-menu"
+        :class="[
+          'bg-background flex flex-col items-center justify-center gap-4',
+          'fixed top-0 left-0 w-full h-screen transition-transform duration-300',
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full',
+          'md:static md:flex md:flex-row md:justify-end md:h-auto md:transform-none md:gap-6',
+        ]"
+      >
+        <li>
+          <RouterLink
+            to="/"
+            class="text-light-text-color hover:text-primary"
+            @click="closeMenu"
+          >
+            Home
+          </RouterLink>
+        </li>
+        <li>
+          <RouterLink
+            to="/platforms"
+            class="text-light-text-color hover:text-primary"
+            @click="closeMenu"
+          >
+            Platforms
+          </RouterLink>
+        </li>
+        <li>
+          <MainButton to="/signup" @click="closeMenu" primary
+            >Sign Up</MainButton
+          >
+        </li>
+        <li>
+          <button
+            @click="toggleTheme"
+            class="w-full text-center text-light-text-color"
+          >
+            {{ isDark ? "Claro" : "Oscuro" }}
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
 </template>
