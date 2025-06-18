@@ -87,7 +87,7 @@ onUnmounted(() => {
   <section class="w-full flex justify-between mt-20 gap-8">
     <!-- Active game -->
     <div
-      class="shadow-2xl rounded-3xl w-full relative overflow-hidden max-h-[545px]"
+      class="shadow-2xl rounded-3xl w-full relative overflow-hidden h-[500px] md:h-auto md:max-h-[545px]"
     >
       <div class="absolute top-0 left-0 mask h-full w-full block"></div>
       <transition name="fade">
@@ -103,7 +103,9 @@ onUnmounted(() => {
         v-if="activeGame"
         class="flex flex-col items-start absolute p-12 bottom-0 left-0 gap-4 text-white"
       >
-        <h2 class="text-6xl font-bold uppercase max-w-[500px]">
+        <h2
+          class="text-4xl md:text-5xl lg:text-6xl font-bold uppercase max-w-[500px]"
+        >
           {{ activeGame.name }}
         </h2>
         <p class="max-w-[500px]">
@@ -117,7 +119,7 @@ onUnmounted(() => {
     </div>
 
     <!-- Lista de juegos populares -->
-    <ul class="flex flex-col items-start justify-start gap-2">
+    <ul class="hidden md:flex flex-col items-start justify-start gap-2">
       <li v-for="game in games" :key="game.id" class="w-full min-w-[200px]">
         <button
           @click="setActiveGame(game)"
@@ -145,11 +147,7 @@ onUnmounted(() => {
 
 <style scoped>
 .mask {
-  background: linear-gradient(
-    to left,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.8) 60%
-  );
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .fade-enter-active,
@@ -159,5 +157,15 @@ onUnmounted(() => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .mask {
+    background: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.8) 60%
+    );
+  }
 }
 </style>

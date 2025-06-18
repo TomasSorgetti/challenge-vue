@@ -58,7 +58,7 @@ export default {
 <template>
   <main class="container mx-auto p-4">
     <h1
-      class="text-light-text-color mt-32 text-6xl max-w-[630px] font-bold uppercase"
+      class="text-light-text-color mt-32 text-4xl max-w-[500px] md:text-5xl lg:text-6xl lg:max-w-[630px] font-bold uppercase"
     >
       find all the games in one place
     </h1>

@@ -76,11 +76,11 @@ const closeMenu = () => {
         </li>
         <li>
           <RouterLink
-            to="/favorites"
+            to="/top5"
             class="text-light-text-color hover:text-primary"
             @click="closeMenu"
           >
-            Favorites
+            Top 5
           </RouterLink>
         </li>
         <li>

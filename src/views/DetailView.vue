@@ -12,18 +12,22 @@ export default {
     const { currentGame, loading, error } = storeToRefs(gameStore);
     const { fetchGameById } = gameStore;
 
-    onMounted(() => {
-      const gameId = route.params.id;
-      if (!gameId) {
-        gameStore.error = "Id not found";
+    onMounted(async () => {
+      const gameId = Number(route.params.id);
+      if (isNaN(gameId) || gameId <= 0) {
+        error.value = "Invalid game ID";
         return;
       }
-      if (currentGame && currentGame?.value?.id == gameId) return;
+      if (currentGame.value && currentGame.value.id === gameId) return;
+
+      loading.value = true;
       try {
-        fetchGameById(Number(gameId));
+        await fetchGameById(gameId);
       } catch (err) {
-        error.value = err.message || "Error to load game";
+        error.value = err.message || "Error al cargar el juego";
         console.error("onMounted error:", err);
+      } finally {
+        loading.value = false;
       }
     });
 
@@ -33,37 +37,55 @@ export default {
 </script>
 
 <template>
-  <section class="w-full mt-20">
+  <main class="w-full py-16 container mx-auto">
+    <!-- Loading -->
     <div v-if="loading" class="text-text text-center">
-      Cargando juegos populares...
+      <!-- TODO : Loading skeleton -->
+      Cargando...
     </div>
-    <div v-else-if="error" class="text-red-500 text-center">{{ error }}</div>
-    <div v-else-if="games.length === 0" class="text-text text-center">
-      No se encontraron juegos populares.
+
+    <!-- Error -->
+    <div v-else-if="error" class="text-red-500 text-center">
+      {{ error }}
+      <button
+        @click="
+          async () => {
+            error.value = null;
+            loading.value = true;
+            try {
+              await fetchGameById(Number($route.params.id));
+            } catch (err) {
+              error.value = err.message || 'Error al cargar el juego';
+            } finally {
+              loading.value = false;
+            }
+          }
+        "
+        class="ml-2 text-blue-500 underline"
+      >
+        Try again
+      </button>
     </div>
-    <div v-else class="flex justify-between gap-2">
-      <div class="bg-red-500 w-full max-w-[1000px]"></div>
-      <ul class="flex flex-col items-start justify-start gap-2">
-        <li v-for="game in games" :key="game.id" class="w-full">
-          <button
-            @click="setActiveGame(game.id)"
-            :class="[
-              'flex items-center gap-2 p-4 w-full rounded-2xl text-text',
-              activeGame === game.id ? 'bg-primary-dark' : 'bg-primary',
-            ]"
-          >
-            <div class="w-[50px] overflow-hidden h-[70px] rounded-sm">
-              <img
-                v-if="game.background_image"
-                :src="game.background_image"
-                :alt="game.name"
-                class="object-cover w-full h-full"
-              />
-            </div>
-            <h2 class="max-w-[140px] text-[16px] text-left">{{ game.name }}</h2>
-          </button>
-        </li>
-      </ul>
+
+    <!-- Content -->
+    <div v-else-if="currentGame" class="p-4">
+      <h1 class="text-3xl font-bold text-text">{{ currentGame.name }}</h1>
+      <img
+        v-if="currentGame.background_image"
+        :src="currentGame.background_image"
+        :alt="currentGame.name"
+        class="w-full max-w-2xl h-auto rounded mt-4"
+      />
+      <p v-if="currentGame.description_raw" class="mt-4 text-text max-w-2xl">
+        {{ currentGame.description_raw.substring(0, 300) + "..." }}
+      </p>
+      <p v-if="currentGame.released" class="mt-2 text-text">
+        Fecha de lanzamiento: {{ currentGame.released }}
+      </p>
+      <p v-if="currentGame.rating" class="mt-2 text-text">
+        Calificación: {{ currentGame.rating }}/5
+      </p>
     </div>
-  </section>
+    <div v-else class="text-text text-center">No se encontró el juego.</div>
+  </main>
 </template>
