@@ -2,12 +2,14 @@
 
 :root {
   --primary-color: #54158e;
+  --primary-bis-color: #54158e;
   --secondary-color: #ffffff;
   --white-color: #ffffff;
   --black-color: #000000;
 
   --background-color: #ebf0f4;
   --card-color: #ffffff;
+  --card-accent: #ffffff;
   --light-text-color: #000000;
   --dark-text-color: #3a3a3a;
 
@@ -19,12 +21,14 @@
 
 [data-theme="dark"] {
   --primary-color: #8803ff;
+  --primary-bis-color: #8903ff46;
   --secondary-color: #19191b;
   --white-color: #ffffff;
   --black-color: #0a0a0b;
 
   --background-color: #0a0a0b;
   --card-color: #19191b;
+  --card-accent: #8803ff;
   --light-text-color: #ffffff;
   --dark-text-color: #818181;
 
@@ -36,12 +40,14 @@
 
 @theme {
   --color-primary: var(--primary-color);
+  --color-primary-bis: var(--primary-bis-color);
   --color-secondary: var(--secondary-color);
   --color-white: var(--white-color);
   --color-black: var(--black-color);
 
   --color-background: var(--background-color);
   --color-card: var(--card-color);
+  --color-card-accent: var(--card-accent);
   --color-light-text-color: var(--light-text-color);
   --color-dark-text-color: var(--dark-text-color);
 

@@ -4,10 +4,9 @@ Podes visitar el diseño de Figma en el siguiente enlace - [Videogames](https://
 
 ![image](https://github.com/user-attachments/assets/60af0c80-ebe0-4f0e-b062-5cd40a828b55)
 
-
 ## Proyecto live
 
-Podes visitar el deploy del proyecto en el siguiente enlace - [Videogames](https://challenge-vue.vercel.app/)
+Podes visitar el deploy del proyecto en el siguiente enlace - [Videogames](https://taxes-challenge.tomassorgetti.com.ar/)
 
 ## Instalación
 
@@ -38,3 +37,20 @@ Creá un archivo .env con las siguientes variables de entorno y reemplazá tu ap
 VITE_URL_BASE=https://api.rawg.io/api
 VITE_API_KEY=
 ```
+
+Una ves creadas las variables de entorno iniciá el proyecto
+
+```bash
+npm run dev
+```
+
+## TODO
+
+- skeletons responsive
+- detail
+- mejor manejo de errores
+- documentación
+- mejorar el boton de toggle theme
+- mejorar un poco el footer
+- el main button cuando esta blockeado no deberia poder clickearse
+- filtrado

@@ -75,7 +75,7 @@ images.value.forEach((src) => {
     </div>
 
     <div class="py-4 px-6">
-      <h2 class="mt-2 text-lg text-light-text-color font-semibold">
+      <h2 class="mt-2 text-lg text-light-text-color font-bold uppercase">
         {{ game.name }}
       </h2>
       <p v-if="game.genres" class="text-sm text-dark-text-color">
@@ -84,7 +84,7 @@ images.value.forEach((src) => {
       <div class="flex justify-between items-center mt-2">
         <p
           v-if="game.rating"
-          class="text-sm text-white bg-primary px-2 mt-4 rounded"
+          class="text-sm text-card-accent font-bold bg-primary-bis border border-primary px-2 mt-4 rounded"
         >
           {{ game.rating }}
         </p>
