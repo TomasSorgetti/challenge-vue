@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
-import MainButton from "../components/MainButton.vue";
+import MainButton from "../components/buttons/MainButton.vue";
 import ThemeToggle from "../components/ThemeToggle.vue";
 
 const isMenuOpen = ref(false);

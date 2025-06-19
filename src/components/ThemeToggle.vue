@@ -7,7 +7,7 @@ const { isDark, toggleTheme } = useTheme();
 <template>
   <button
     @click="toggleTheme"
-    class="relative flex items-center w-16 h-8 p-1 rounded-full bg-card text-text transition-all duration-300 ease-in-out cursor-pointer"
+    class="relative flex items-center w-16 h-8 p-1 rounded-full bg-card text-text transition-all duration-300 ease-in-out cursor-pointer border border-gray-800"
     :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`"
     role="switch"
     :aria-checked="isDark"
@@ -18,7 +18,7 @@ const { isDark, toggleTheme } = useTheme();
     ></div>
     <svg
       v-if="isDark"
-      class="w-5 h-5 ml-1 text-yellow-300 transition-opacity duration-300"
+      class="w-5 h-5 ml-1 text-primary transition-opacity duration-300"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -33,7 +33,7 @@ const { isDark, toggleTheme } = useTheme();
     </svg>
     <svg
       v-else
-      class="w-5 h-5 ml-9 text-gray-800 transition-opacity duration-300"
+      class="w-5 h-5 ml-9 text-black transition-opacity duration-300"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"

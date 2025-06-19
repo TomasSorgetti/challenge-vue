@@ -8,6 +8,7 @@ import { storeToRefs } from "pinia";
 import { useGameStore } from "../lib/stores/gameStore";
 import { useRoute } from "vue-router";
 import { useTopFiveStore } from "../lib/stores/topFiveStore";
+import TopFiveButton from "../components/buttons/TopFiveButton.vue";
 
 const route = useRoute();
 
@@ -52,6 +53,7 @@ onUnmounted(() => {
   <main class="w-full py-16 container mx-auto">
     <!-- Loading -->
     <div v-if="loading" class="text-text text-center">
+      <!-- TODO => crear componente en skeletons -->
       <div class="animate-pulse">
         <div class="h-8 bg-gray-300 rounded w-3/4 mx-auto mb-4"></div>
         <div
@@ -69,43 +71,38 @@ onUnmounted(() => {
 
     <!-- Content -->
     <div v-else-if="currentGame" class="p-4">
-      <h1 class="text-3xl font-bold text-text">{{ currentGame.name }}</h1>
+      <h1 class="text-3xl font-bold text-light-text-color">
+        {{ currentGame.name }}
+      </h1>
       <img
         v-if="currentGame.background_image"
         :src="currentGame.background_image"
         :alt="currentGame.name"
         class="w-full max-w-2xl h-auto rounded mt-4"
       />
-      <p v-if="currentGame.description_raw" class="mt-4 text-text max-w-2xl">
+      <p
+        v-if="currentGame.description_raw"
+        class="mt-4 text-light-text-color max-w-2xl"
+      >
         {{ currentGame.description_raw.substring(0, 300) + "..." }}
       </p>
-      <p v-if="currentGame.released" class="mt-2 text-text">
+      <p v-if="currentGame.released" class="mt-2 text-light-text-color">
         Fecha de lanzamiento: {{ currentGame.released }}
       </p>
-      <p v-if="currentGame.rating" class="mt-2 text-text">
+      <p v-if="currentGame.rating" class="mt-2 text-light-text-color">
         Calificación: {{ currentGame.rating }}/5
       </p>
 
-      <!-- Top 5 -->
-      <button
-        v-if="!isInTopFive(currentGame.id)"
-        @click="addTopFiveGames(currentGame)"
-        class="bg-primary text-white px-4 py-2 rounded mt-4 hover:bg-primary-darker transition-colors duration-300"
-      >
-        Add to Top 5
-      </button>
-      <button
-        v-else
-        @click="removeTopFiveGames(currentGame)"
-        class="bg-primary text-white px-4 py-2 rounded mt-4 hover:bg-primary-darker transition-colors duration-300"
-      >
-        Remove from Top 5
-      </button>
-
-      <p v-if="topFiveError" class="mt-2 text-red-500">
-        {{ topFiveError }}
-      </p>
+      <!-- Top 5 Button -->
+      <TopFiveButton
+        :game="currentGame"
+        :is-in-top-five="isInTopFive"
+        :add-to-top-five="addTopFiveGames"
+        :remove-from-top-five="removeTopFiveGames"
+        :error="topFiveError"
+      />
     </div>
+
     <div v-else class="text-text text-center">Game not found.</div>
   </main>
 </template>

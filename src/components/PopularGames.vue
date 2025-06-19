@@ -1,5 +1,5 @@
 <script setup>
-import MainButton from "./MainButton.vue";
+import MainButton from "./buttons/MainButton.vue";
 import { defineProps, ref, watch, onMounted, onUnmounted } from "vue";
 
 const activeGame = ref(null);

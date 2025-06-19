@@ -46,10 +46,8 @@ npm run dev
 
 ## TODO
 
-- añadir las plataformas a las cards
 - manejar los errores de top 5 games, en especial cuando ya existen 5 top games
 - detail
 - mejor manejo de errores
 - documentación
 - filtrado
-- a veces se buguea el scroll infinito. ver
