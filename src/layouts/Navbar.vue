@@ -80,7 +80,7 @@ const closeMenu = () => {
             class="text-light-text-color hover:text-primary"
             @click="closeMenu"
           >
-            Home
+            Videogames
           </RouterLink>
         </li>
         <li>

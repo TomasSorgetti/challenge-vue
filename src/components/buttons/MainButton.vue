@@ -37,7 +37,9 @@ defineProps({
     :to="disabled ? '#' : to"
     :class="[
       'px-6 py-3 font-bold rounded-lg text-text transition-colors duration-200',
-      primary && !secondary ? 'bg-primary text-white' : '',
+      primary && !secondary
+        ? 'bg-primary-bis border border-primary text-white'
+        : '',
       secondary ? 'bg-white text-black' : '',
       disabled && 'cursor-not-allowed',
     ]"

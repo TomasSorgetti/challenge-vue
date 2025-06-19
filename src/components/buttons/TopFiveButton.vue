@@ -46,7 +46,7 @@ defineProps({
     <button
       v-else
       @click="removeFromTopFive(game)"
-      class="bg-light-text-color text-secondary font-bold px-4 py-2 rounded transition-colors duration-300"
+      class="bg-light-text-color text-secondary font-bold px-4 py-2 rounded transition-colors duration-300 cursor-pointer"
     >
       Remove from Top 5
     </button>
