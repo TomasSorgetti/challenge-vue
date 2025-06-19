@@ -85,8 +85,12 @@ onUnmounted(() => {
             >
               {{ currentGame.name }}
             </h1>
-            <p class="text-light-text-color">
-              {{ currentGame.genres.map((genre) => genre.name).join(", ") }}
+            <p class="text-light-text-color max-w-[400px]">
+              {{
+                currentGame.platforms
+                  .map((platform) => platform.platform.name)
+                  .join(", ")
+              }}
             </p>
             <!-- Top 5 Button -->
             <TopFiveButton
