@@ -46,6 +46,7 @@ npm run dev
 
 ## TODO
 
+- separar el skeleton de detail games a un componente aparte
 - detail
 - mejor manejo de errores
 - documentación

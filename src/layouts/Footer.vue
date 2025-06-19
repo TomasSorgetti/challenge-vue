@@ -1,3 +1,7 @@
+<!--
+  Componente Footer
+  - Muestra un pie de página con información de derechos de autor.
+-->
 <template>
   <footer
     class="bg-card mt-16 text-light-text-color py-12 text-center shadow-2xl"

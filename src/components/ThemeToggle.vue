@@ -1,3 +1,9 @@
+<!--
+  Componente ThemeToggle
+  - Permite alternar entre el modo claro y oscuro de la aplicación.
+  - Props: Ninguna.
+  - Dependencias: Requiere el composable useTheme para gestionar el estado del tema.
+-->
 <script setup>
 import { useTheme } from "../lib/composables/useTheme";
 

@@ -1,3 +1,14 @@
+<!--
+  Componente TopFiveButton
+  - Permite añadir o quitar un juego de la lista de Top 5.
+  - Props:
+    - game: Object (juego a gestionar, requerido)
+    - isInTopFive: Function (verifica si el juego está en Top 5, requerido)
+    - addToTopFive: Function (añade el juego a Top 5, requerido)
+    - removeFromTopFive: Function (elimina el juego de Top 5, requerido)
+    - error: String (mensaje de error, por defecto null)
+  - Dependencias: Requiere Pinia para interactuar con el store de Top 5.
+-->
 <script setup>
 defineProps({
   game: {

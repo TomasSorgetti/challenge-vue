@@ -1,3 +1,11 @@
+<!--
+  Componente TopFiveView
+  - Muestra una lista de los juegos favoritos del usuario en una cuadrícula.
+  - Props: Ninguna.
+  - Dependencias:
+    - Pinia para useTopFiveStore.
+    - Componente GameCard para renderizar cada juego.
+-->
 <script setup>
 import GameCard from "../components/GameCard.vue";
 import { useTopFiveStore } from "../lib/stores/topFiveStore";

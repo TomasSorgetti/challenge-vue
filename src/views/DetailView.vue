@@ -1,8 +1,13 @@
+<!--
+  Componente GameDetail
+  - Muestra los detalles de un videojuego, incluyendo nombre, imagen, descripción, fecha de lanzamiento y calificación.
+  - Props: Ninguna.
+  - Dependencias:
+    - vue-router para useRoute.
+    - Pinia para useGameStore y useTopFiveStore.
+    - Componente TopFiveButton para gestionar la lista de Top 5.
+-->
 <script setup>
-/**
- * Componente para mostrar el detalle de un videojuego
- *
- */
 import { onMounted, onUnmounted } from "vue";
 import { storeToRefs } from "pinia";
 import { useGameStore } from "../lib/stores/gameStore";

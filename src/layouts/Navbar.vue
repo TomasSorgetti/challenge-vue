@@ -1,3 +1,11 @@
+<!--
+  Componente Header
+  - Muestra una barra de navegación fija con un logo, enlaces, botón de registro y alternador de tema.
+  - Props: Ninguna.
+  - Dependencias: 
+    - vue-router para RouterLink.
+    - Componentes MainButton y ThemeToggle.
+-->
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";

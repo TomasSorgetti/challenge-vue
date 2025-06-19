@@ -1,3 +1,11 @@
+<!--
+  Componente GameCard
+  - Muestra una tarjeta de juego con imagen rotativa, título, géneros, calificación y fecha de lanzamiento.
+  - Props:
+    - game: Object (datos del juego, requerido, debe incluir id, name, background_image)
+    - isInTopFive: Boolean (indica si el juego está en Top 5, por defecto false)
+  - Dependencias: Requiere vue-router para RouterLink.
+-->
 <script setup>
 import { ref, computed } from "vue";
 

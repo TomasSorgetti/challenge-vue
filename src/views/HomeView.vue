@@ -1,3 +1,11 @@
+<!--
+  Componente HomeView
+  - Muestra una página principal con juegos populares, una barra de búsqueda y una lista de juegos con carga infinita.
+  - Props: Ninguna.
+  - Dependencias:
+    - Pinia para useGameStore y useTopFiveStore.
+    - Componentes GameCard, PopularGames, PopularSkeleton, GameCardSkeleton, SearchBar.
+-->
 <script setup>
 import { onMounted, onUnmounted, ref, nextTick } from "vue";
 import { useGameStore } from "../lib/stores/gameStore";
