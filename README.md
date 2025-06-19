@@ -2,7 +2,8 @@
 
 Podes visitar el diseño de Figma en el siguiente enlace - [Videogames](https://www.figma.com/design/7QJVqcZpLucteRJfatMt4J/videogames?node-id=0-1&m=dev&t=2hkRnLSXSfOzoyJC-1)
 
-![image](https://github.com/user-attachments/assets/60af0c80-ebe0-4f0e-b062-5cd40a828b55)
+![image](https://github.com/user-attachments/assets/a9d98976-4ae1-4877-8e95-9ee5aa8d5290)
+
 
 ## Proyecto live
 
@@ -43,15 +44,7 @@ Una ves creadas las variables de entorno iniciá el proyecto
 ```bash
 npm run dev
 ```
+![HOME_DARK_MODE](https://github.com/user-attachments/assets/a90df6f8-8325-4f0e-8589-a9c7d53199f2)
 
-## TODO
+![HOME_LIGHT_MODE](https://github.com/user-attachments/assets/0b3d04b2-ce1c-47f4-b736-028309a919db)
 
-- detail
-- separar el skeleton de detail games a un componente aparte
--
-- documentación
-- filtrado
-- mejor manejo de errores
-- agregar modal para el manejo de errores del top 5 (quitar uno si lo desea)
-- agregar sistema de alertas para mensajes exitosos o fallidos
-- corregir que a veces no ejecuta en el scroll la peticion a la api
