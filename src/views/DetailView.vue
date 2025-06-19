@@ -116,6 +116,9 @@ onUnmounted(() => {
             >
               About this videogame
             </h2>
+            <span class="text-dark-text-color mt-4">{{
+              currentGame.genres.map((genre) => genre.name).join(", ")
+            }}</span>
             <p
               v-if="currentGame.description_raw"
               class="mt-4 text-light-text-color max-w-2xl"
