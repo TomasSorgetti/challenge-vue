@@ -16,7 +16,6 @@ export const useGameStore = defineStore("game", () => {
       games.value = result;
     } catch (err) {
       error.value = err.message;
-      console.error("fetchGames error:", err);
     }
   };
 
@@ -27,7 +26,6 @@ export const useGameStore = defineStore("game", () => {
       popularGames.value = result;
     } catch (err) {
       error.value = err.message;
-      console.error("fetchPopularGames error:", err);
     }
   };
 
@@ -38,7 +36,6 @@ export const useGameStore = defineStore("game", () => {
       currentGame.value = await getGameById(id);
     } catch (err) {
       error.value = err.message;
-      console.error("fetchGameById error:", err);
     } finally {
       loading.value = false;
     }

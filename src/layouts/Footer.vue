@@ -4,8 +4,7 @@
   >
     <div class="container mx-auto text-center">
       <p>
-        © {{ new Date().getFullYear() }} Tomás Sorgetti. Todos los derechos
-        reservados.
+        © {{ new Date().getFullYear() }} Tomás Sorgetti. All rights reserved.
       </p>
     </div>
   </footer>

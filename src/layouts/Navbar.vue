@@ -4,7 +4,6 @@ import { RouterLink } from "vue-router";
 import MainButton from "../components/MainButton.vue";
 import ThemeToggle from "../components/ThemeToggle.vue";
 
-// Menu
 const isMenuOpen = ref(false);
 
 const toggleMenu = () => {
