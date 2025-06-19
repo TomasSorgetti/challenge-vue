@@ -14,6 +14,7 @@ import { useGameStore } from "../lib/stores/gameStore";
 import { useRoute } from "vue-router";
 import { useTopFiveStore } from "../lib/stores/topFiveStore";
 import TopFiveButton from "../components/buttons/TopFiveButton.vue";
+import DetailSkeleton from "../components/skeletons/DetailSkeleton.vue";
 
 const route = useRoute();
 
@@ -53,22 +54,16 @@ onUnmounted(() => {
     error: null,
     loading: false,
   });
+
+  clearError();
 });
 </script>
 
 <template>
   <main class="w-full py-16">
     <!-- Loading -->
-    <div v-if="loading" class="text-text text-center">
-      <!-- TODO => crear componente en skeletons -->
-      <div class="animate-pulse">
-        <div class="h-8 bg-gray-300 rounded w-3/4 mx-auto mb-4"></div>
-        <div
-          class="h-64 bg-gray-300 rounded w-full max-w-2xl mx-auto mb-4"
-        ></div>
-        <div class="h-4 bg-gray-300 rounded w-5/6 mx-auto mb-2"></div>
-        <div class="h-4 bg-gray-300 rounded w-4/6 mx-auto"></div>
-      </div>
+    <div v-if="loading" class="w-full">
+      <DetailSkeleton />
     </div>
 
     <!-- Error -->
@@ -121,7 +116,9 @@ onUnmounted(() => {
           <article
             class="bg-card w-full lg:flex-1 rounded-xl shadow-2xl p-12 flex flex-col items-start justify-center"
           >
-            <h2 class="text-light-text-color text-2xl uppercase font-bold">
+            <h2
+              class="text-light-text-color text-2xl uppercase font-bold lg:text-3xl"
+            >
               About this videogame
             </h2>
             <p
