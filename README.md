@@ -11,14 +11,14 @@ Podes visitar el deploy del proyecto en el siguiente enlace - [Videogames](https
 
 ## Instalación
 
-Asegurate de tener instalado node y npm, si no lo tenés, instalalo primero.
+Asegurate de tener instalado node y npm, si no los tenés, instalalos primero.
 
 ```bash
 node -v
 npm -v
 ```
 
-Cloná el repositorio, instalá las dependencias.
+Cloná el repositorio e instalá las dependencias.
 
 ```bash
 git clone https://github.com/TomasSorgetti/challenge-vue.git
