@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, onUnmounted, ref, nextTick } from "vue";
 import { useGameStore } from "../lib/stores/gameStore";
+import { useTopFiveStore } from "../lib/stores/topFiveStore";
 import { storeToRefs } from "pinia";
 import GameCard from "../components/GameCard.vue";
 import PopularGames from "../components/PopularGames.vue";
@@ -8,11 +9,16 @@ import PopularSkeleton from "../components/skeletons/PopularSkeleton.vue";
 import GameCardSkeleton from "../components/skeletons/GameCardSkeleton.vue";
 import SearchBar from "../components/SearchBar.vue";
 
+// Game store
 const gameStore = useGameStore();
 const { games, popularGames, loading, error, hasMoreGames, currentPage } =
   storeToRefs(gameStore);
 const { fetchGames, fetchPopularGames } = gameStore;
 
+// TopFive store
+const { isInTopFive } = useTopFiveStore();
+
+// Scroll
 const loadingMore = ref(false);
 const observer = ref(null);
 const sentinel = ref(null);
@@ -29,7 +35,7 @@ onMounted(async () => {
     loading.value = false;
   }
 
-  await nextTick(); // Espera a que el DOM se renderice
+  await nextTick();
 
   observer.value = new IntersectionObserver(
     (entries) => {
@@ -96,7 +102,12 @@ const loadMoreGames = async () => {
       <SearchBar />
       <h2 class="text-2xl font-bold mb-4 mt-8">Filter by:</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <GameCard v-for="game in games" :key="game.id" :game="game" />
+        <GameCard
+          v-for="game in games"
+          :key="game.id"
+          :game="game"
+          :is-in-top-five="isInTopFive(game.id)"
+        />
       </div>
       <!-- Loading skeleton for more games -->
       <div v-if="loadingMore">

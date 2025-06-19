@@ -15,21 +15,36 @@ defineProps({
       return "id" in game && "name" in game && "background_image" in game;
     },
   },
+  isInTopFive: {
+    type: Boolean,
+    default: false,
+  },
 });
 </script>
 
 <template>
   <router-link
     :to="{ name: 'detail', params: { id: game.id } }"
-    class="block bg-white rounded-xl shadow hover:shadow-md transition"
+    class="relative block bg-white rounded-xl shadow hover:shadow-md transition"
   >
+    <!-- Top 5 button -->
+    <span
+      v-if="isInTopFive"
+      class="absolute top-0 right-0 rounded-tr-xl z-10 px-4 py-2 text-xs text-white bg-primary text-center"
+    >
+      top 5
+    </span>
+
+    <!-- Image -->
     <div class="relative overflow-hidden">
       <img
         :src="game.background_image"
         :alt="game.name"
-        class="w-full h-48 object-cover rounded"
+        class="w-full h-48 object-cover rounded-t-xl"
       />
     </div>
+
+    <!-- Content -->
     <div class="p-4">
       <h2 class="mt-2 text-lg font-semibold">{{ game.name }}</h2>
     </div>

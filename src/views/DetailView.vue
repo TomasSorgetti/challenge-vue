@@ -7,11 +7,18 @@ import { onMounted, onUnmounted } from "vue";
 import { storeToRefs } from "pinia";
 import { useGameStore } from "../lib/stores/gameStore";
 import { useRoute } from "vue-router";
+import { useTopFiveStore } from "../lib/stores/topFiveStore";
 
 const route = useRoute();
+
+// Game store
 const gameStore = useGameStore();
 const { currentGame, loading, error } = storeToRefs(gameStore);
 const { fetchGameById } = gameStore;
+
+// TopFive store
+const { addTopFiveGames, removeTopFiveGames, isInTopFive, topFiveError } =
+  useTopFiveStore();
 
 onMounted(async () => {
   const gameId = Number(route.params.id);
@@ -77,6 +84,26 @@ onUnmounted(() => {
       </p>
       <p v-if="currentGame.rating" class="mt-2 text-text">
         Calificación: {{ currentGame.rating }}/5
+      </p>
+
+      <!-- Top 5 -->
+      <button
+        v-if="!isInTopFive(currentGame.id)"
+        @click="addTopFiveGames(currentGame)"
+        class="bg-primary text-white px-4 py-2 rounded mt-4 hover:bg-primary-darker transition-colors duration-300"
+      >
+        Add to Top 5
+      </button>
+      <button
+        v-else
+        @click="removeTopFiveGames(currentGame)"
+        class="bg-primary text-white px-4 py-2 rounded mt-4 hover:bg-primary-darker transition-colors duration-300"
+      >
+        Remove from Top 5
+      </button>
+
+      <p v-if="topFiveError" class="mt-2 text-red-500">
+        {{ topFiveError }}
       </p>
     </div>
     <div v-else class="text-text text-center">Game not found.</div>

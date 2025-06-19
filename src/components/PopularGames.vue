@@ -114,7 +114,7 @@ onUnmounted(() => {
           doloremque repudiandae esse eius vel beatae iusto eaque! Minus, iste
           dicta?
         </p>
-        <MainButton secondary notAllowed> Add Top 5 </MainButton>
+        <MainButton secondary notAllowed> See game </MainButton>
       </div>
     </div>
 
