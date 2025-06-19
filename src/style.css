@@ -8,6 +8,8 @@
   --black-color: #000000;
 
   --background-color: #ebf0f4;
+  --mask1-color: #ffffffcc;
+  --mask2-color: #ffffff28;
   --card-color: #ffffff;
   --card-accent: #ffffff;
   --light-text-color: #000000;
@@ -27,6 +29,8 @@
   --black-color: #0a0a0b;
 
   --background-color: #0a0a0b;
+  --mask1-color: #000000de;
+  --mask2-color: #00000065;
   --card-color: #19191b;
   --card-accent: #8803ff;
   --light-text-color: #ffffff;
@@ -46,6 +50,8 @@
   --color-black: var(--black-color);
 
   --color-background: var(--background-color);
+  --color-mask1: var(--mask1-color);
+  --color-mask2: var(--mask2-color);
   --color-card: var(--card-color);
   --color-card-accent: var(--card-accent);
   --color-light-text-color: var(--light-text-color);

@@ -84,13 +84,20 @@ export const getGameById = async (id) => {
     if (!response.ok) throw new Error("Failed to fetch game");
     const data = await response.json();
 
+    const screenshotsRes = await fetch(
+      `${URL_BASE}/games/${id}/screenshots?key=${API_KEY}`
+    );
+    if (!screenshotsRes.ok) throw new Error("Failed to fetch screenshots");
+    const screenshotsData = await screenshotsRes.json();
+
+    data.screenshots = screenshotsData.results;
+
     return data;
   } catch (error) {
     console.error("Error fetching game:", error);
     throw error;
   }
 };
-
 /**
  * Gebera un delay de milisegundos antes de continuar.
  *
