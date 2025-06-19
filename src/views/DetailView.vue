@@ -34,6 +34,8 @@ export default {
     return { currentGame, loading, error };
   },
 };
+
+// TODO => limpiar en unmounted
 </script>
 
 <template>

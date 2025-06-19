@@ -3,6 +3,7 @@ import { ref, watch, computed } from "vue";
 import { useRouter } from "vue-router";
 import { searchGames } from "../lib/services/games";
 import { debounce } from "lodash-es";
+import SearchIcon from "./icons/SearchIcon.vue";
 
 const query = ref("");
 const searchResults = ref([]);
@@ -69,13 +70,16 @@ const dropdownClasses = computed(() => ({
         v-model.trim="query"
         type="text"
         placeholder="Search videogame..."
-        class="w-full border border-primary rounded-full px-6 py-3 text-text focus:outline-none focus:ring-2 focus:ring-primary"
+        class="w-full border border-primary rounded-full px-6 py-3 text-light-text-color focus:outline-none focus:ring-2 focus:ring-primary"
         @focus="showDropdown = query || searchResults.length > 0"
         @blur="handleBlur"
       />
+      <!-- Search icon -->
       <div
-        class="absolute top-1/2 transform -translate-y-1/2 right-4 h-6 w-6 bg-[url('/search.svg')]"
-      ></div>
+        class="absolute top-1/2 transform -translate-y-1/2 right-4 h-6 w-6 flex items-center justify-center"
+      >
+        <SearchIcon />
+      </div>
     </div>
 
     <!-- Menu -->
