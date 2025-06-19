@@ -39,14 +39,14 @@ defineProps({
     <button
       v-if="!isInTopFive(game.id)"
       @click="addToTopFive(game)"
-      class="bg-light-text-color text-secondary font-bold px-4 py-2 rounded transition-colors duration-300 cursor-pointer"
+      class="bg-light-text-color text-secondary font-bold px-16 py-4 rounded transition-colors duration-300 cursor-pointer"
     >
       Add to Top 5
     </button>
     <button
       v-else
       @click="removeFromTopFive(game)"
-      class="bg-light-text-color text-secondary font-bold px-4 py-2 rounded transition-colors duration-300 cursor-pointer"
+      class="bg-light-text-color text-secondary font-bold px-16 py-4 rounded transition-colors duration-300 cursor-pointer"
     >
       Remove from Top 5
     </button>
