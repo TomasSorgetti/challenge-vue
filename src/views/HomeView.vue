@@ -18,7 +18,7 @@ onMounted(async () => {
   try {
     await Promise.all([fetchGames(), fetchPopularGames()]);
   } catch (err) {
-    error.value = err.message || "Error al cargar los juegos";
+    error.value = err.message || "Error to fetch games";
     console.error("onMounted error:", err);
   } finally {
     loading.value = false;
