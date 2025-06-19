@@ -59,7 +59,7 @@ images.value.forEach((src) => {
 <template>
   <router-link
     :to="{ name: 'detail', params: { id: game.id } }"
-    class="relative block bg-card rounded-xl shadow-lg hover:shadow-2xl hover:scale-102 transition duration-300 ease-in-out"
+    class="relative block bg-card rounded-xl shadow-lg hover:shadow-2xl hover:scale-102 transition duration-300 ease-in-out h-full"
     @mouseenter="startImageRotation()"
     @mouseleave="stopImageRotation()"
   >
