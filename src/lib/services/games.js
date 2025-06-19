@@ -52,7 +52,7 @@ export const getPopularGames = async (size = 5) => {
     if (API_KEY.trim() === "") throw new Error("API key is required");
 
     const response = await fetch(
-      `${URL_BASE}/games?key=${API_KEY}&ordering=-rating&page_size=${size}`
+      `${URL_BASE}/games?key=${API_KEY}&ordering=-added&page_size=${size}`
     );
     if (!response.ok) throw new Error("Failed to fetch popular games");
     const data = await response.json();
