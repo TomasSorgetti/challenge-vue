@@ -30,10 +30,18 @@ export const useGameStore = defineStore("game", () => {
   const hasMoreGames = ref(true);
   const currentPage = ref(1);
 
+  const platform = ref(null);
+  const ordering = ref(null);
+
   const fetchGames = async (page = 1, append = false) => {
     error.value = null;
     try {
-      const result = await getAllGames(page);
+      const result = await getAllGames(
+        page,
+        21,
+        platform.value,
+        ordering.value
+      );
       if (append) {
         games.value = [...games.value, ...result];
       } else {
@@ -45,6 +53,22 @@ export const useGameStore = defineStore("game", () => {
       error.value = err.message || "Error fetching games";
       hasMoreGames.value = false;
     }
+  };
+
+  const setPlatform = (newPlatform) => {
+    platform.value = newPlatform;
+    currentPage.value = 1;
+    games.value = [];
+    hasMoreGames.value = true;
+    fetchGames(1, false);
+  };
+
+  const setOrdering = (newOrdering) => {
+    ordering.value = newOrdering;
+    currentPage.value = 1;
+    games.value = [];
+    hasMoreGames.value = true;
+    fetchGames(1, false);
   };
 
   const fetchPopularGames = async () => {
@@ -80,5 +104,9 @@ export const useGameStore = defineStore("game", () => {
     fetchGames,
     fetchPopularGames,
     fetchGameById,
+    setPlatform,
+    setOrdering,
+    ordering,
+    platform,
   };
 });

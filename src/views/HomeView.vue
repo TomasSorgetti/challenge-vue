@@ -1,13 +1,5 @@
-<!--
-  Componente HomeView
-  - Muestra una página principal con juegos populares, una barra de búsqueda y una lista de juegos con carga infinita.
-  - Props: Ninguna.
-  - Dependencias:
-    - Pinia para useGameStore y useTopFiveStore.
-    - Componentes GameCard, PopularGames, PopularSkeleton, GameCardSkeleton, SearchBar.
--->
 <script setup>
-import { onMounted, onUnmounted, ref, nextTick } from "vue";
+import { onMounted, onUnmounted, ref, nextTick, computed } from "vue";
 import { useGameStore } from "../lib/stores/gameStore";
 import { useTopFiveStore } from "../lib/stores/topFiveStore";
 import { storeToRefs } from "pinia";
@@ -17,19 +9,52 @@ import PopularSkeleton from "../components/skeletons/PopularSkeleton.vue";
 import GameCardSkeleton from "../components/skeletons/GameCardSkeleton.vue";
 import SearchBar from "../components/SearchBar.vue";
 
-// Game store
 const gameStore = useGameStore();
-const { games, popularGames, loading, error, hasMoreGames, currentPage } =
-  storeToRefs(gameStore);
-const { fetchGames, fetchPopularGames } = gameStore;
+const {
+  games,
+  popularGames,
+  loading,
+  error,
+  hasMoreGames,
+  currentPage,
+  platform,
+  ordering,
+} = storeToRefs(gameStore);
+const { fetchGames, fetchPopularGames, setPlatform, setOrdering } = gameStore;
 
-// TopFive store
 const { isInTopFive } = useTopFiveStore();
 
-// Scroll
 const loadingMore = ref(false);
 const observer = ref(null);
 const sentinel = ref(null);
+
+const platformOptions = [
+  { value: null, label: "All Platforms" },
+  { value: "4", label: "PC" },
+  { value: "187", label: "PlayStation 5" },
+  { value: "1", label: "Xbox One" },
+];
+
+const orderLabel = computed(() => {
+  if (!ordering || ordering.value === null) return "Sort";
+  return ordering.value === "name" ? "A-Z" : "Z-A";
+});
+
+const selectedPlatform = ref(null);
+
+const applyPlatform = (platformValue) => {
+  if (selectedPlatform.value === platformValue) {
+    selectedPlatform.value = null;
+  } else {
+    selectedPlatform.value = platformValue;
+  }
+  setPlatform(selectedPlatform.value);
+};
+
+const toggleOrdering = () => {
+  const newOrdering = ordering.value === "name" ? "-name" : "name";
+  setOrdering(newOrdering);
+};
 
 onMounted(async () => {
   if (games.value.length > 0 && popularGames.value.length > 0) return;
@@ -106,9 +131,42 @@ const loadMoreGames = async () => {
 
     <!-- Content -->
     <div v-else>
+      <!-- Popular games -->
       <PopularGames :games="popularGames" :loading="loading" :error="error" />
+
+      <!-- Search bar -->
       <SearchBar />
-      <h2 class="text-2xl font-bold mb-4 mt-8">All Videogames</h2>
+
+      <!-- Filters -->
+      <div
+        class="my-12 w-full flex flex-col md:flex-row md:justify-between gap-4"
+      >
+        <div class="flex items-center gap-2">
+          <button
+            v-for="option in platformOptions"
+            :key="option.value"
+            :class="[
+              'px-4 py-2 rounded',
+              selectedPlatform === option.value
+                ? 'bg-primary text-white cursor-not-allowed font-bold'
+                : 'bg-card text-light-text-color cursor-pointer hover:bg-primary hover:text-white',
+            ]"
+            @click="applyPlatform(option.value)"
+            :disabled="selectedPlatform === option.value || loading"
+          >
+            {{ option.label }}
+          </button>
+        </div>
+
+        <button
+          class="cursor-pointer font-semibold shadow-2xl px-4 py-2 rounded bg-card text-light-text-color hover:bg-primary hover:text-white"
+          @click="toggleOrdering"
+          :disabled="loading"
+        >
+          {{ orderLabel }}
+        </button>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <GameCard
           v-for="game in games"

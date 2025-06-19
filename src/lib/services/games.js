@@ -8,16 +8,25 @@ import { URL_BASE, API_KEY } from "../constants/index";
  * @returns {Promise<Object[]>} - Una promesa que resuelve con un array de objetos de juegos.
  * @throws {Error} - Lanza un error si falla la solicitud o falta la API key.
  */
-export const getAllGames = async (page = 1, page_size = 21) => {
+export const getAllGames = async (
+  page = 1,
+  page_size = 21,
+  platform = null,
+  ordering = null
+) => {
   try {
-    console.log("getAllGames");
-
     if (API_KEY.trim() === "") throw new Error("API key is required");
 
-    const response = await fetch(
-      `${URL_BASE}/games?key=${API_KEY}&page=${page}&page_size=${page_size}`
-    );
+    const params = new URLSearchParams({
+      key: API_KEY,
+      page: page.toString(),
+      page_size: page_size.toString(),
+    });
 
+    if (platform) params.append("platforms", platform);
+    if (ordering) params.append("ordering", ordering);
+
+    const response = await fetch(`${URL_BASE}/games?${params.toString()}`);
     if (!response.ok) throw new Error("Failed to fetch games");
     const data = await response.json();
 
@@ -69,6 +78,7 @@ export const getPopularGames = async (size = 5) => {
     throw error;
   }
 };
+
 /**
  * Obtiene los detalles de un juego específico por su ID.
  *
@@ -98,6 +108,7 @@ export const getGameById = async (id) => {
     throw error;
   }
 };
+
 /**
  * Gebera un delay de milisegundos antes de continuar.
  *
