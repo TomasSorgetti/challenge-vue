@@ -46,19 +46,19 @@ const closeMenu = () => {
       >
         <div
           :class="[
-            'w-6 h-0.5 bg-black transition-transform duration-300',
+            'w-6 h-0.5 bg-light-text-color transition-transform duration-300',
             isMenuOpen ? 'rotate-45 translate-y-2' : '',
           ]"
         ></div>
         <div
           :class="[
-            'w-6 h-0.5 bg-black transition-opacity duration-300',
+            'w-6 h-0.5 bg-light-text-color transition-opacity duration-300',
             isMenuOpen ? 'opacity-0' : '',
           ]"
         ></div>
         <div
           :class="[
-            'w-6 h-0.5 bg-black transition-transform duration-300',
+            'w-6 h-0.5 bg-light-text-color transition-transform duration-300',
             isMenuOpen ? '-rotate-45 -translate-y-2' : '',
           ]"
         ></div>
@@ -68,7 +68,7 @@ const closeMenu = () => {
       <ul
         id="mobile-menu"
         :class="[
-          'bg-background flex flex-col items-center justify-center gap-4',
+          'bg-background flex flex-col items-center justify-center gap-8 lg:gap-4',
           'fixed top-0 left-0 w-full h-screen transition-transform duration-300',
           isMenuOpen ? 'translate-x-0' : 'translate-x-full',
           'md:static md:flex md:flex-row md:justify-end md:h-auto md:translate-x-0 md:gap-6',
