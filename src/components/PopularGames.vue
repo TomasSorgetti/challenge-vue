@@ -1,12 +1,3 @@
-<!--
-  Componente GameCarousel
-  - Muestra un carrusel de juegos con una imagen destacada que rota automáticamente y una lista de juegos populares.
-  - Props:
-    - games: Array (lista de juegos, requerido, por defecto [])
-    - loading: Boolean (indica si los datos están cargando, por defecto false)
-    - error: String (mensaje de error, por defecto null)
-  - Dependencias: Requiere vue-router para navegación y el componente MainButton.
--->
 <script setup>
 import MainButton from "./buttons/MainButton.vue";
 import { defineProps, ref, watch, onMounted, onUnmounted } from "vue";

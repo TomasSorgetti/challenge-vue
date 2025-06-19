@@ -1,19 +1,3 @@
-/*
-  Store useTopFiveStore
-  - Gestiona la lista de los 5 juegos favoritos del usuario, almacenados en localStorage.
-  - Estado:
-    - topFiveGames: Array (lista de hasta 5 juegos favoritos)
-    - error: String (mensaje de error)
-  - Acciones:
-    - loadTopFiveGames: Carga los juegos favoritos desde localStorage.
-    - addTopFiveGames: Añade un juego a la lista de favoritos (máximo 5).
-    - removeTopFiveGames: Elimina un juego de la lista de favoritos.
-    - clearError: Limpia el mensaje de error.
-    - isInTopFive: Verifica si un juego está en la lista de favoritos.
-  - Dependencias:
-    - Pinia para defineStore.
-    - localStorage para persistencia de datos.
-*/
 import { defineStore } from "pinia";
 import { ref } from "vue";
 

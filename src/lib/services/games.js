@@ -1,12 +1,15 @@
 import { URL_BASE, API_KEY } from "../constants/index";
 
 /**
- * Obtiene una lista paginada de juegos desde la API.
+ * Obtiene una lista paginada de juegos desde la API para mostrar en la app.
+ * Permite filtrar por plataforma y ordenar por nombre.
  *
- * @param {number} [page=1] - Número de página que se desea obtener.
- * @param {number} [page_size=21] - Cantidad de juegos por página.
- * @returns {Promise<Object[]>} - Una promesa que resuelve con un array de objetos de juegos.
- * @throws {Error} - Lanza un error si falla la solicitud o falta la API key.
+ * @param {number} [page=1] - Página a obtener (empieza en 1).
+ * @param {number} [pageSize=21] - Cantidad de juegos por página.
+ * @param {string|null} [platform=null] - ID de la plataforma para filtrar (ej: "4" para PC, "187" para PS5).
+ * @param {string|null} [ordering=null] - Ordenamiento ("name" para A-Z, "-name" para Z-A).
+ * @returns {Promise<Array>} Promesa que devuelve un array de objetos de juegos (con id, nombre, imagen, etc.).
+ * @throws {Error} Si falta la clave de API o falla la solicitud (ej: error de red o respuesta inválida).
  */
 export const getAllGames = async (
   page = 1,

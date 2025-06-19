@@ -9,6 +9,7 @@ import PopularSkeleton from "../components/skeletons/PopularSkeleton.vue";
 import GameCardSkeleton from "../components/skeletons/GameCardSkeleton.vue";
 import SearchBar from "../components/SearchBar.vue";
 
+// Game store
 const gameStore = useGameStore();
 const {
   games,
@@ -22,19 +23,20 @@ const {
 } = storeToRefs(gameStore);
 const { fetchGames, fetchPopularGames, setPlatform, setOrdering } = gameStore;
 
+// TopFive store
 const { isInTopFive } = useTopFiveStore();
 
 const loadingMore = ref(false);
 const observer = ref(null);
 const sentinel = ref(null);
 
+// TODO => Refactorizar al estado global y usar la menor logica en el componente
 const platformOptions = [
   { value: null, label: "All Platforms" },
   { value: "4", label: "PC" },
   { value: "187", label: "PlayStation 5" },
   { value: "1", label: "Xbox One" },
 ];
-
 const orderLabel = computed(() => {
   if (!ordering || ordering.value === null) return "Sort";
   return ordering.value === "name" ? "A-Z" : "Z-A";

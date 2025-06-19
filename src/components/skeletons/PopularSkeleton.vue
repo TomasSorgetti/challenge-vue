@@ -1,4 +1,3 @@
-<!-- Componente que muestra un skeleton de popular -->
 <template>
   <div class="w-full flex justify-between items-start mt-20 gap-8">
     <div

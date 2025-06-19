@@ -1,22 +1,3 @@
-/*
-  Store useGameStore
-  - Gestiona el estado de los juegos, incluyendo lista de juegos, juegos populares y detalles de un juego específico.
-  - Estado:
-    - games: Array (lista de todos los juegos)
-    - popularGames: Array (lista de juegos populares)
-    - currentGame: Object (detalles del juego actual)
-    - loading: Boolean (indica si se están cargando datos)
-    - error: String (mensaje de error)
-    - hasMoreGames: Boolean (indica si hay más juegos para cargar)
-    - currentPage: Number (página actual de la lista de juegos)
-  - Acciones:
-    - fetchGames: Obtiene juegos por página, con opción de añadir o reemplazar.
-    - fetchPopularGames: Obtiene juegos populares.
-    - fetchGameById: Obtiene detalles de un juego por ID.
-  - Dependencias:
-    - Pinia para defineStore.
-    - Servicios getAllGames, getPopularGames, getGameById para obtener datos.
-*/
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { getAllGames, getPopularGames, getGameById } from "../services/games";

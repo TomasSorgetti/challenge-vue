@@ -1,4 +1,3 @@
-<!-- Icono de búsqueda (lupa) -->
 <template>
   <svg
     width="30"

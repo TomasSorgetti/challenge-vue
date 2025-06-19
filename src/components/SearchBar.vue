@@ -1,13 +1,3 @@
-<!--
-  Componente SearchBar
-  - Proporciona un campo de búsqueda para juegos con un desplegable de resultados.
-  - Props: Ninguna.
-  - Dependencias: 
-    - vue-router para navegación.
-    - lodash-es para debounce.
-    - Servicio searchGames para buscar juegos.
-    - Componente SearchIcon para el ícono de búsqueda.
--->
 <script setup>
 import { ref, watch, computed } from "vue";
 import { useRouter } from "vue-router";

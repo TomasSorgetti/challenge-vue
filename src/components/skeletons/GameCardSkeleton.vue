@@ -1,6 +1,3 @@
-<!-- 
-  Componente que muestra un skeleton de tarjetas de juegos
--->
 <template>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
     <div
