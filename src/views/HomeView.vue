@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, onUnmounted, ref, nextTick } from "vue";
 import { useGameStore } from "../lib/stores/gameStore";
 import { storeToRefs } from "pinia";
 import GameCard from "../components/GameCard.vue";
@@ -9,21 +9,64 @@ import GameCardSkeleton from "../components/skeletons/GameCardSkeleton.vue";
 import SearchBar from "../components/SearchBar.vue";
 
 const gameStore = useGameStore();
-const { games, popularGames, loading, error } = storeToRefs(gameStore);
+const { games, popularGames, loading, error, hasMoreGames, currentPage } =
+  storeToRefs(gameStore);
 const { fetchGames, fetchPopularGames } = gameStore;
+
+const loadingMore = ref(false);
+const observer = ref(null);
+const sentinel = ref(null);
 
 onMounted(async () => {
   if (games.value.length > 0 && popularGames.value.length > 0) return;
   loading.value = true;
   try {
-    await Promise.all([fetchGames(), fetchPopularGames()]);
+    await Promise.all([fetchGames(1, false), fetchPopularGames()]);
   } catch (err) {
     error.value = err.message || "Error to fetch games";
     console.error("onMounted error:", err);
   } finally {
     loading.value = false;
   }
+
+  await nextTick(); // Espera a que el DOM se renderice
+
+  observer.value = new IntersectionObserver(
+    (entries) => {
+      if (
+        entries[0].isIntersecting &&
+        hasMoreGames.value &&
+        !loadingMore.value
+      ) {
+        loadMoreGames();
+      }
+    },
+    { threshold: 0.1 }
+  );
+
+  if (sentinel.value) {
+    observer.value.observe(sentinel.value);
+  }
 });
+
+onUnmounted(() => {
+  if (observer.value) {
+    observer.value.disconnect();
+  }
+});
+
+const loadMoreGames = async () => {
+  if (!hasMoreGames.value || loadingMore.value) return;
+  loadingMore.value = true;
+  try {
+    await fetchGames(currentPage.value + 1, true);
+  } catch (err) {
+    error.value = err.message || "Error loading more games";
+    console.error("loadMoreGames error:", err);
+  } finally {
+    loadingMore.value = false;
+  }
+};
 </script>
 
 <template>
@@ -37,11 +80,15 @@ onMounted(async () => {
     <!-- Loading skeleton -->
     <div v-if="loading">
       <PopularSkeleton />
-      <GameCardSkeleton />
+      <div class="mt-20">
+        <GameCardSkeleton />
+      </div>
     </div>
 
     <!-- Error -->
-    <div v-else-if="error" class="text-red-500">{{ error }}</div>
+    <div v-else-if="error" class="text-red-500 text-center">
+      {{ error }}
+    </div>
 
     <!-- Content -->
     <div v-else>
@@ -50,6 +97,19 @@ onMounted(async () => {
       <h2 class="text-2xl font-bold mb-4 mt-8">Filter by:</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <GameCard v-for="game in games" :key="game.id" :game="game" />
+      </div>
+      <!-- Loading skeleton for more games -->
+      <div v-if="loadingMore">
+        <GameCardSkeleton />
+      </div>
+
+      <div v-if="hasMoreGames" ref="sentinel" class="h-10"></div>
+
+      <div
+        v-if="!hasMoreGames && games.length > 0"
+        class="text-center mt-4 text-gray-500"
+      >
+        No more games to load.
       </div>
     </div>
   </main>

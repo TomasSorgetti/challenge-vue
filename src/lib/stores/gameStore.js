@@ -8,14 +8,23 @@ export const useGameStore = defineStore("game", () => {
   const currentGame = ref(null);
   const loading = ref(false);
   const error = ref(null);
+  const hasMoreGames = ref(true);
+  const currentPage = ref(1);
 
-  const fetchGames = async (page = 1) => {
+  const fetchGames = async (page = 1, append = false) => {
     error.value = null;
     try {
       const result = await getAllGames(page);
-      games.value = result;
+      if (append) {
+        games.value = [...games.value, ...result];
+      } else {
+        games.value = result;
+      }
+      hasMoreGames.value = result.length > 0;
+      currentPage.value = page;
     } catch (err) {
-      error.value = err.message;
+      error.value = err.message || "Error fetching games";
+      hasMoreGames.value = false;
     }
   };
 
@@ -25,7 +34,7 @@ export const useGameStore = defineStore("game", () => {
       const result = await getPopularGames();
       popularGames.value = result;
     } catch (err) {
-      error.value = err.message;
+      error.value = err.message || "Error fetching popular games";
     }
   };
 
@@ -35,7 +44,7 @@ export const useGameStore = defineStore("game", () => {
     try {
       currentGame.value = await getGameById(id);
     } catch (err) {
-      error.value = err.message;
+      error.value = err.message || "Error fetching game";
     } finally {
       loading.value = false;
     }
@@ -47,6 +56,8 @@ export const useGameStore = defineStore("game", () => {
     currentGame,
     loading,
     error,
+    hasMoreGames,
+    currentPage,
     fetchGames,
     fetchPopularGames,
     fetchGameById,

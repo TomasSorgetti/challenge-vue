@@ -5,12 +5,14 @@ import { URL_BASE, API_KEY } from "../constants/index";
  * @param {number} page
  * @returns
  */
-export const getAllGames = async (page = 1) => {
+export const getAllGames = async (page = 1, page_size = 21) => {
   try {
+    console.log("getAllGames");
+
     if (API_KEY.trim() === "") throw new Error("API key is required");
 
     const response = await fetch(
-      `${URL_BASE}/games?key=${API_KEY}&page=${page}`
+      `${URL_BASE}/games?key=${API_KEY}&page=${page}&page_size=${page_size}`
     );
 
     if (!response.ok) throw new Error("Failed to fetch games");
