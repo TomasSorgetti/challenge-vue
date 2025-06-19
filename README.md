@@ -6,8 +6,7 @@ todo => agregar imágen de figma
 
 ## Proyecto live
 
-todo => agregar enlace correcto
-Podes visitar el deploy del proyecto en el siguiente enlace - [Videogames](https://tomassorgetti.com.ar)
+Podes visitar el deploy del proyecto en el siguiente enlace - [Videogames](https://challenge-vue.vercel.app/)
 
 ## Instalación
 
@@ -32,7 +31,7 @@ cd challenge-vue
 npm install
 ```
 
-Creá un archivo .env con las siguientes variables de entorno y reemplazá tu api key (tenés un ejemplo llamado .env.example, podés copiarlo)
+Creá un archivo .env con las siguientes variables de entorno y reemplazá tu api key (tenés un ejemplo llamado .env.example, podés copiarlo o cambiarle el nombre)
 
 ```bash
 VITE_URL_BASE=https://api.rawg.io/api
