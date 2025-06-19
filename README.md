@@ -2,7 +2,8 @@
 
 Podes visitar el diseño de Figma en el siguiente enlace - [Videogames](https://www.figma.com/design/7QJVqcZpLucteRJfatMt4J/videogames?node-id=0-1&m=dev&t=2hkRnLSXSfOzoyJC-1)
 
-todo => agregar imágen de figma
+![image](https://github.com/user-attachments/assets/60af0c80-ebe0-4f0e-b062-5cd40a828b55)
+
 
 ## Proyecto live
 
