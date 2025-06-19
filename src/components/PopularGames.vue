@@ -120,10 +120,11 @@ onUnmounted(() => {
           {{ activeGame.name }}
         </h2>
         <p class="max-w-[500px]">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos quod
-          minima facere, quas praesentium ratione hic fugit sint mollitia
-          doloremque repudiandae esse eius vel beatae iusto eaque! Minus, iste
-          dicta?
+          {{
+            activeGame.description_raw
+              ? activeGame.description_raw.substring(0, 200) + "..."
+              : "This game has no description."
+          }}
         </p>
         <MainButton secondary disabled> See game </MainButton>
       </div>

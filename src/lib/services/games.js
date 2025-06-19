@@ -42,16 +42,33 @@ export const getPopularGames = async (size = 5) => {
     const response = await fetch(
       `${URL_BASE}/games?key=${API_KEY}&ordering=-rating&page_size=${size}`
     );
-    if (!response.ok) throw new Error("Failed to fetch most popular games");
+    if (!response.ok) throw new Error("Failed to fetch popular games");
     const data = await response.json();
 
-    return data.results;
+    const detailedGames = await Promise.all(
+      data.results.map(async (game) => {
+        const detailRes = await fetch(
+          `${URL_BASE}/games/${game.id}?key=${API_KEY}`
+        );
+        if (!detailRes.ok)
+          throw new Error(`Failed to fetch details for game ${game.id}`);
+        const detailData = await detailRes.json();
+
+        return {
+          id: game.id,
+          name: game.name,
+          background_image: game.background_image,
+          description_raw: detailData.description_raw,
+        };
+      })
+    );
+
+    return detailedGames;
   } catch (error) {
-    console.error("Error fetching games:", error);
+    console.error("Error fetching games with descriptions:", error);
     throw error;
   }
 };
-
 /**
  * Obtiene los detalles de un juego específico por su ID.
  *

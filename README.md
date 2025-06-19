@@ -48,8 +48,10 @@ npm run dev
 
 - detail
 - separar el skeleton de detail games a un componente aparte
+-
 - documentación
 - filtrado
 - mejor manejo de errores
 - agregar modal para el manejo de errores del top 5 (quitar uno si lo desea)
 - agregar sistema de alertas para mensajes exitosos o fallidos
+- corregir que a veces no ejecuta en el scroll la peticion a la api
