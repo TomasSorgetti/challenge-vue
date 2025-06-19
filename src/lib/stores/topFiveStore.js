@@ -82,6 +82,16 @@ export const useTopFiveStore = defineStore("topFive", () => {
   const isInTopFive = (gameId) =>
     topFiveGames.value.some((g) => g.id === gameId);
 
+  const updateTopFiveOrder = (newOrder) => {
+    try {
+      topFiveGames.value = [...newOrder];
+      localStorage.setItem("topFiveGames", JSON.stringify(topFiveGames.value));
+      error.value = null;
+    } catch (err) {
+      error.value = err.message || "Error updating top games order";
+    }
+  };
+
   loadTopFiveGames();
 
   return {
@@ -89,6 +99,7 @@ export const useTopFiveStore = defineStore("topFive", () => {
     addTopFiveGames,
     removeTopFiveGames,
     isInTopFive,
+    updateTopFiveOrder,
     topFiveError: error,
     clearError,
   };
