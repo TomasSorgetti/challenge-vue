@@ -106,6 +106,8 @@ onUnmounted(() => {
           :src="activeGame.background_image"
           :alt="activeGame.name"
           class="w-full h-full object-cover"
+          draggable="false"
+          loading="eager"
         />
       </transition>
       <div
@@ -145,6 +147,8 @@ onUnmounted(() => {
               :src="game.background_image"
               :alt="game.name"
               class="object-cover w-full h-full"
+              draggable="false"
+              loading="lazy"
             />
           </div>
           <h3 class="max-w-[140px] text-[16px] text-left">{{ game.name }}</h3>

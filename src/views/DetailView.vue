@@ -86,6 +86,8 @@ onUnmounted(() => {
         :src="currentGame.background_image"
         :alt="currentGame.name"
         class="w-full max-w-2xl h-auto rounded mt-4"
+        draggable="false"
+        loading="lazy"
       />
       <p
         v-if="currentGame.description_raw"

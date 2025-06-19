@@ -79,6 +79,8 @@ images.value.forEach((src) => {
         "
         :alt="game.name"
         class="w-full h-48 object-cover rounded-t-xl"
+        draggable="false"
+        loading="lazy"
       />
     </div>
 

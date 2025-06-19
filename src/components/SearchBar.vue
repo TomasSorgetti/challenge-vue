@@ -117,6 +117,8 @@ const dropdownClasses = computed(() => ({
           :src="game.background_image"
           :alt="game.name"
           class="w-12 h-12 object-cover rounded"
+          draggable="false"
+          loading="lazy"
         />
         <span class="text-text truncate">{{ game.name }}</span>
       </li>

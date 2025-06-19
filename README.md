@@ -46,7 +46,6 @@ npm run dev
 
 ## TODO
 
-- drag and drop para top 5
 - detail
 - separar el skeleton de detail games a un componente aparte
 - documentación
