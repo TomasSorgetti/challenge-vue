@@ -114,7 +114,7 @@ onUnmounted(() => {
           doloremque repudiandae esse eius vel beatae iusto eaque! Minus, iste
           dicta?
         </p>
-        <MainButton secondary notAllowed> See game </MainButton>
+        <MainButton secondary disabled> See game </MainButton>
       </div>
     </div>
 

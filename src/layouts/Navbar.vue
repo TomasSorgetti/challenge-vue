@@ -85,7 +85,7 @@ const closeMenu = () => {
           </RouterLink>
         </li>
         <li>
-          <MainButton to="/" @click="closeMenu" primary notAllowed
+          <MainButton to="/" @click="closeMenu" primary disabled
             >Sign Up</MainButton
           >
         </li>

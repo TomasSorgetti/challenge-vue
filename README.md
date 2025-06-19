@@ -51,7 +51,5 @@ npm run dev
 - detail
 - mejor manejo de errores
 - documentación
-- mejorar el boton de toggle theme
-- el main button cuando esta blockeado no deberia poder clickearse
 - filtrado
 - a veces se buguea el scroll infinito. ver
