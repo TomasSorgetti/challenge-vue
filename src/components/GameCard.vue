@@ -59,7 +59,7 @@ images.value.forEach((src) => {
 <template>
   <router-link
     :to="{ name: 'detail', params: { id: game.id } }"
-    class="relative block bg-card rounded-xl shadow-lg hover:shadow-2xl hover:scale-102 transition duration-300 ease-in-out h-full"
+    class="relative block bg-card rounded-xl shadow-lg hover:shadow-2xl hover:scale-102 transition duration-300 ease-in-out h-full lg:min-h-[360px]"
     @mouseenter="startImageRotation()"
     @mouseleave="stopImageRotation()"
   >
@@ -84,13 +84,20 @@ images.value.forEach((src) => {
       />
     </div>
 
-    <div class="py-4 px-6 gap-2 flex flex-col items-start justify-between">
-      <h2 class="text-2xl text-light-text-color font-bold uppercase">
-        {{ game.name }}
-      </h2>
-      <p v-if="game.genres" class="text-sm text-dark-text-color">
-        {{ game.genres.map((g) => g.name).join(", ") }}
-      </p>
+    <div
+      class="py-4 px-6 gap-2 flex flex-col items-start justify-between min-h-[calc(100%-12rem)]"
+    >
+      <!-- Card info -->
+      <div>
+        <h2 class="text-2xl text-light-text-color font-bold uppercase">
+          {{ game.name }}
+        </h2>
+        <p v-if="game.genres" class="text-sm text-dark-text-color">
+          {{ game.genres.map((g) => g.name).join(", ") }}
+        </p>
+      </div>
+
+      <!-- Card footer -->
       <div class="w-full flex justify-between items-center mt-4">
         <p
           v-if="game.rating"
