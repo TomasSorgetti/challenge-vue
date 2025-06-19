@@ -7,8 +7,9 @@
   --black-color: #000000;
 
   --background-color: #ebf0f4;
+  --card-color: #ffffff;
   --light-text-color: #000000;
-  --dark-text-color: #000000;
+  --dark-text-color: #3a3a3a;
 
   /* Skeletons */
   --dark-skeleton: #4d4d4d;
@@ -23,6 +24,7 @@
   --black-color: #0a0a0b;
 
   --background-color: #0a0a0b;
+  --card-color: #19191b;
   --light-text-color: #ffffff;
   --dark-text-color: #818181;
 
@@ -39,6 +41,7 @@
   --color-black: var(--black-color);
 
   --color-background: var(--background-color);
+  --color-card: var(--card-color);
   --color-light-text-color: var(--light-text-color);
   --color-dark-text-color: var(--dark-text-color);
 

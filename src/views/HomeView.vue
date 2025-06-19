@@ -100,7 +100,7 @@ const loadMoreGames = async () => {
     <div v-else>
       <PopularGames :games="popularGames" :loading="loading" :error="error" />
       <SearchBar />
-      <h2 class="text-2xl font-bold mb-4 mt-8">Filter by:</h2>
+      <h2 class="text-2xl font-bold mb-4 mt-8">All Videogames</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <GameCard
           v-for="game in games"
