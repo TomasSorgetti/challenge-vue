@@ -143,7 +143,7 @@ const loadMoreGames = async () => {
       <div
         class="my-12 w-full flex flex-col md:flex-row md:justify-between gap-4"
       >
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 flex-wrap">
           <button
             v-for="option in platformOptions"
             :key="option.value"

@@ -117,7 +117,9 @@ onUnmounted(() => {
               : "This game has no description."
           }}
         </p>
-        <MainButton secondary disabled> See game </MainButton>
+        <MainButton :to="`/videogames/${activeGame.id}`" secondary>
+          See game
+        </MainButton>
       </div>
     </div>
 
