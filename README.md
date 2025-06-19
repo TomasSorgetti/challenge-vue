@@ -1,5 +1,40 @@
-# Vue 3 + Vite
+# <img src="https://raw.githubusercontent.com/ChugunovRoman/figma-linux/master/resources/icons/128x128.png" width="32"> Proyecto de Figma
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Podes visitar el diseño de Figma en el siguiente enlace - [Videogames](https://www.figma.com/design/7QJVqcZpLucteRJfatMt4J/videogames?node-id=0-1&m=dev&t=2hkRnLSXSfOzoyJC-1)
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+todo => agregar imágen de figma
+
+## Proyecto live
+
+todo => agregar enlace correcto
+Podes visitar el deploy del proyecto en el siguiente enlace - [Videogames](https://tomassorgetti.com.ar)
+
+## Instalación
+
+Asegurate de tener instalado node y npm, si no lo tenés, instalalo primero.
+
+```bash
+node -v
+npm -v
+```
+
+Cloná el repositorio, instalá las dependencias.
+
+```bash
+git clone https://github.com/TomasSorgetti/challenge-vue.git
+```
+
+```bash
+cd challenge-vue
+```
+
+```bash
+npm install
+```
+
+Creá un archivo .env con las siguientes variables de entorno y reemplazá tu api key (tenés un ejemplo llamado .env.example, podés copiarlo)
+
+```bash
+VITE_URL_BASE=https://api.rawg.io/api
+VITE_API_KEY=
+```
