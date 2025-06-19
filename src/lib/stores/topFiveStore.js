@@ -28,17 +28,24 @@ export const useTopFiveStore = defineStore("topFive", () => {
   const addTopFiveGames = (game) => {
     try {
       if (topFiveGames.value.length >= 5) {
-        error.value = "Top 5 is full";
-        return;
+        //? debería arrojar un error para que lo atrape el catch
+        //? o dejar el catch unicamente para error de localstorage
+
+        error.value =
+          "Top 5 is full. Please remove a game before adding a new one.";
+        return false;
       }
       if (topFiveGames.value.some((g) => g.id === game.id)) {
         error.value = "This game is already in the top 5";
-        return;
+        return false;
       }
       topFiveGames.value = [...topFiveGames.value, game];
       localStorage.setItem("topFiveGames", JSON.stringify(topFiveGames.value));
+      error.value = null;
+      return true;
     } catch (err) {
       error.value = err.message || "Error adding top games";
+      return false;
     }
   };
 
@@ -46,9 +53,14 @@ export const useTopFiveStore = defineStore("topFive", () => {
     try {
       topFiveGames.value = topFiveGames.value.filter((g) => g.id !== game.id);
       localStorage.setItem("topFiveGames", JSON.stringify(topFiveGames.value));
+      error.value = null;
     } catch (err) {
       error.value = err.message || "Error removing top games";
     }
+  };
+
+  const clearError = () => {
+    error.value = null;
   };
 
   const isInTopFive = (gameId) =>
@@ -62,5 +74,6 @@ export const useTopFiveStore = defineStore("topFive", () => {
     removeTopFiveGames,
     isInTopFive,
     topFiveError: error,
+    clearError,
   };
 });

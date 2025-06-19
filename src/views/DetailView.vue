@@ -18,8 +18,10 @@ const { currentGame, loading, error } = storeToRefs(gameStore);
 const { fetchGameById } = gameStore;
 
 // TopFive store
-const { addTopFiveGames, removeTopFiveGames, isInTopFive, topFiveError } =
-  useTopFiveStore();
+const topFiveStore = useTopFiveStore();
+const { topFiveError } = storeToRefs(topFiveStore);
+const { addTopFiveGames, removeTopFiveGames, isInTopFive, clearError } =
+  topFiveStore;
 
 onMounted(async () => {
   const gameId = Number(route.params.id);
@@ -90,7 +92,7 @@ onUnmounted(() => {
         Fecha de lanzamiento: {{ currentGame.released }}
       </p>
       <p v-if="currentGame.rating" class="mt-2 text-light-text-color">
-        Calificación: {{ currentGame.rating }}/5
+        Calificación: {{ currentGame.rating }}
       </p>
 
       <!-- Top 5 Button -->
@@ -100,6 +102,7 @@ onUnmounted(() => {
         :add-to-top-five="addTopFiveGames"
         :remove-from-top-five="removeTopFiveGames"
         :error="topFiveError"
+        :clear-error="clearError"
       />
     </div>
 

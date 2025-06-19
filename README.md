@@ -46,8 +46,9 @@ npm run dev
 
 ## TODO
 
-- manejar los errores de top 5 games, en especial cuando ya existen 5 top games
 - detail
 - mejor manejo de errores
 - documentación
 - filtrado
+- agregar modal para el manejo de errores del top 5 (quitar uno si lo desea)
+- agregar sistema de alertas para mensajes exitosos o fallidos
