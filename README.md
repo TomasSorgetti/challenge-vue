@@ -47,6 +47,8 @@ npm run dev
 ## TODO
 
 - skeletons responsive
+- añadir las plataformas a las cards
+- manejar los errores de top 5 games, en especial cuando ya existen 5 top games
 - detail
 - mejor manejo de errores
 - documentación
@@ -54,3 +56,4 @@ npm run dev
 - mejorar un poco el footer
 - el main button cuando esta blockeado no deberia poder clickearse
 - filtrado
+- a veces se buguea el scroll infinito. ver

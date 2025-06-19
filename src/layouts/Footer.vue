@@ -1,11 +1,9 @@
 <template>
   <footer
-    class="bg-background text-text p-4 mt-8 border-t border-gray-200 dark:border-gray-700"
+    class="bg-card mt-16 text-light-text-color py-12 text-center shadow-2xl"
   >
-    <div class="container mx-auto text-center">
-      <p>
-        © {{ new Date().getFullYear() }} Tomás Sorgetti. All rights reserved.
-      </p>
-    </div>
+    <small>
+      © {{ new Date().getFullYear() }} Tomás Sorgetti. All rights reserved.
+    </small>
   </footer>
 </template>
