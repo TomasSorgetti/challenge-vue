@@ -84,9 +84,9 @@ const loadMoreGames = async () => {
     </h1>
 
     <!-- Loading skeleton -->
-    <div v-if="loading">
+    <div v-if="loading" class="w-full">
       <PopularSkeleton />
-      <div class="mt-20">
+      <div class="mt-20 w-full">
         <GameCardSkeleton />
       </div>
     </div>
