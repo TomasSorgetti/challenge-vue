@@ -148,7 +148,6 @@ onUnmounted(() => {
             ></video>
             <img
               v-else-if="currentGame.background_image"
-              :key="index"
               :src="currentGame.background_image"
               :alt="currentGame.name"
               class="w-full h-full object-cover"
@@ -161,10 +160,10 @@ onUnmounted(() => {
           >
             <div
               v-for="(image, index) in currentGame.screenshots"
+              :key="index"
               class="w-full h-full overflow-hidden rounded-2xl shadow-2xl"
             >
               <img
-                :key="index"
                 :src="image.image"
                 :alt="currentGame.name + index"
                 class="w-full h-full object-cover"
