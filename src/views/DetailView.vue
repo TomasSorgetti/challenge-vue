@@ -81,7 +81,7 @@ onUnmounted(() => {
             class="container mx-auto p-4 flex flex-col items-center gap-8 md:items-start"
           >
             <h1
-              class="uppercase text-4xl font-bold text-light-text-color mt-32 md:text-5xl lg:text-[72px] lg:max-w-[533px]"
+              class="uppercase text-4xl font-bold text-light-text-color mt-32 md:text-5xl lg:text-[72px] lg:max-w-[600px]"
             >
               {{ currentGame.name }}
             </h1>
